@@ -1,4 +1,4 @@
-# GitHub Action cfn-security🔄
+# GitHub Action cfn-security
 
 A simple GitHub Action for static code analysis of AWS CloudFormation to improve infrastructure as code security.
 
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: grolston/cfn-security@master
+    - uses: grolston/cfn-security@v1
       env:
         CLOUDFORMATION_DIRECTORY: "./cloudformation"
         TEST: "cfn-nag"
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: grolston/cfn-security@master
+    - uses: grolston/cfn-security@v1
       env:
         CLOUDFORMATION_DIRECTORY: "./cloudformation"
         TEST: "checkov"
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - uses: grolston/cfn-security@master
+    - uses: grolston/cfn-security@v1
       env:
         CLOUDFORMATION_DIRECTORY: "./cloudformation"
         TEST: "all"
