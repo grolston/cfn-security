@@ -6,7 +6,7 @@ A simple `GitHub Action` for AWS CloudFormation static code analysis to improve 
 
 ## Inputs
 
-### `cloudformation-directory`
+### `cloudformation_directory`
 
 The directory of the repo to scan the cloudformation templates.
 
