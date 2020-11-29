@@ -26,7 +26,7 @@ jobs:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       env:
-        CLOUDFORMATION_DIRECTORY: "./cloudformation"
+        CLOUDFORMATION_DIRECTORY: "./cloudformation/"
         TEST: "cfn-nag"
 ```
 
@@ -46,7 +46,7 @@ jobs:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       env:
-        CLOUDFORMATION_DIRECTORY: "./cloudformation"
+        CLOUDFORMATION_DIRECTORY: "./cloudformation/"
         TEST: "checkov"
 ```
 
@@ -66,7 +66,7 @@ jobs:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       env:
-        CLOUDFORMATION_DIRECTORY: "./cloudformation"
+        CLOUDFORMATION_DIRECTORY: "./cloudformation/"
         TEST: "all"
 ```
 
