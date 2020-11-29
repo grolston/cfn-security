@@ -8,7 +8,7 @@ if [ -z "$INPUT_CLOUDFORMATION_DIRECTORY" ]; then
 fi
 
 if [ ! -d "$INPUT_CLOUDFORMATION_DIRECTORY" ]; then
-  echo "${CLOUDFORMATION_DIRECTORY} path not found. Quitting."
+  echo "${INPUT_CLOUDFORMATION_DIRECTORY} path not found. Quitting."
   exit 1
 fi
 
