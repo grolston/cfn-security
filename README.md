@@ -6,11 +6,9 @@ A simple GitHub Action for static code analysis of AWS CloudFormation to improve
 
 ## Usage
 
-### `securityscan.yml` Example
-
 To get started you will more than likely want security scans to happen on all branches. Simply add `securityscan.yml` file (or whatever you would like to name it in your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions)
 
-#### Example cfn-nag Test
+### Example cfn-nag Test
 
 The following example tests CloudFormation with cfn-nag:
 
@@ -30,7 +28,7 @@ jobs:
         TEST: "cfn-nag"
 ```
 
-#### Example checkov Test
+### Example checkov Test
 
 The following example tests CloudFormation with checkov:
 
@@ -50,7 +48,7 @@ jobs:
         TEST: "checkov"
 ```
 
-#### Example all Tests
+### Example all Tests
 
 The following example tests CloudFormation with all scanning tools.
 
