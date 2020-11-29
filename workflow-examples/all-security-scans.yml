@@ -13,13 +13,15 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
-      env:
-        TEST: "cfn-nag"
+      with:
+        scanner: "cfn-nag"
+        cloudformation_directory: ${CLOUDFORMATION_DIRECTORY}
   ## checkov security scan
   security-scan-checkov:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
-      env:
-        TEST: "checkov"
+      with:
+        scanner: "checkov"
+        cloudformation_directory: ${CLOUDFORMATION_DIRECTORY}

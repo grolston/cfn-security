@@ -4,6 +4,16 @@ A simple `GitHub Action` for AWS CloudFormation static code analysis to improve 
 
 ***The Action does not require AWS credentials!***
 
+## Inputs
+
+### `cloudformation-directory`
+
+The directory of the repo to scan the cloudformation templates.
+
+### `scanner`
+
+The scanner used to run security test. Options are `cfn-nag`, `checkov`, or `all`
+
 ## Usage
 
 To get started simply add a workflow `.yml` file (name it whatever you would like) to your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions).
@@ -15,19 +25,20 @@ For examples GitHub Actions workflow files check out the [example workflow templ
 The following example tests CloudFormation with cfn-nag:
 
 ```yaml
-name: Security Scan
+name: CFN-NAG Security Scan
 
 on: [push]
 
 jobs:
+  ## cfn-nag security scan
   security-scan-nag:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
-      env:
-        CLOUDFORMATION_DIRECTORY: "./cloudformation/"
-        TEST: "cfn-nag"
+      with:
+        scanner: "cfn-nag"
+        cloudformation_directory: './cloudformation/' ## change to your template directory
 ```
 
 ### Example checkov Test
@@ -35,55 +46,23 @@ jobs:
 The following example tests CloudFormation with checkov:
 
 ```yaml
-name: Security Scan
+name: Checkov Security Scan
 
 on: [push]
 
 jobs:
+  ## checkov security scan
   security-scan-checkov:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
-      env:
-        CLOUDFORMATION_DIRECTORY: "./cloudformation/"
-        TEST: "checkov"
+      with:
+        scanner: "checkov"
+        cloudformation_directory: './cloudformation/' ## change to your template directory
 ```
-
-### Example Singe Job All Tests
-
-The following example tests CloudFormation with all scanning tools.
 
 > **Note:** it is possible to simple combine the two examples above into a single file which will run all tests as individual jobs. Reference [all-security-scans.yml](workflow-examples/all-security-scans.yml)
-
-The following runs all tests within one job:
-
-```yaml
-name: Security Scan
-
-on: [push]
-
-jobs:
-  security-scan-all:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - uses: grolston/cfn-security@master
-      env:
-        CLOUDFORMATION_DIRECTORY: "./cloudformation/"
-        TEST: "all"
-```
-
-### Configuration
-
-The following settings must be passed as environment variables as shown in the example. Sensitive information should be [set as encrypted secrets](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) — otherwise, they'll be public to anyone browsing your repository's source code and CI logs.
-
-> **Disclaimer:** No sensitive information is needed to conduct testing.
-
-| Env Variable | Description| Suggested Type | Required | Default |
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-| `CLOUDFORMATION_DIRECTORY` | Directory within your git repository which contains cloudformation templates files | `./cloudformation` | **Yes** | N/A |
-| `TEST` | The security test to perform | `cfn-nag` , `checkov`, `all` | **Yes** | N/A |
 
 ## License
 

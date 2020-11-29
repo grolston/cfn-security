@@ -1,6 +1,14 @@
 name: 'cfn-security'
-description: 'CloudFormation Static Code Analysis tool suite'
+description: 'CloudFormation Static Code Analysis Tool Suite'
 author: grolston
+inputs:
+  cloudformation_directory:
+    description: 'directory within git repo to scan cloudformation templates'
+    default: './cloudformation/'
+    required: true
+  scanner:
+    description: 'scanner used to run security test. Options are "cfn-nag", "checkov", "all"'
+    required: true
 runs:
   using: docker
   image: Dockerfile

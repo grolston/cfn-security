@@ -3,11 +3,12 @@ name: CFN-NAG Security Scan
 on: [push]
 
 jobs:
+  ## cfn-nag security scan
   security-scan-nag:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
-      env:
-        CLOUDFORMATION_DIRECTORY: "./cloudformation/"
-        TEST: "cfn-nag"
+      with:
+        scanner: "cfn-nag"
+        cloudformation_directory: './cloudformation/' ## change to your template directory
