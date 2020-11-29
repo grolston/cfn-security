@@ -17,7 +17,6 @@ if [ -z "$TEST" ]; then
   exit 1
 fi
 
-
 case $TEST in
 
   "cfn-nag")
