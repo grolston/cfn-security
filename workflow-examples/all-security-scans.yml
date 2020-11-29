@@ -2,10 +2,6 @@ name: CFN-NAG Security Scan
 
 on: [push]
 
-## set the env var to be used across jobs
-env:
-  CLOUDFORMATION_DIRECTORY: "./cloudformation/"
-
 jobs:
   ## cfn-nag security scan
   security-scan-nag:
@@ -14,8 +10,9 @@ jobs:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       with:
+        cloudformation_directory: "./cloudformation/"
         scanner: "cfn-nag"
-        cloudformation_directory: ${CLOUDFORMATION_DIRECTORY}
+
   ## checkov security scan
   security-scan-checkov:
     runs-on: ubuntu-latest
@@ -23,5 +20,5 @@ jobs:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       with:
+        cloudformation_directory: "./cloudformation/"
         scanner: "checkov"
-        cloudformation_directory: ${CLOUDFORMATION_DIRECTORY}

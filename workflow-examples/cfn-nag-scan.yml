@@ -10,5 +10,5 @@ jobs:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       with:
-        scanner: "cfn-nag"
         cloudformation_directory: './cloudformation/' ## change to your template directory
+        scanner: "cfn-nag"

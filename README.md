@@ -37,8 +37,8 @@ jobs:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       with:
-        scanner: "cfn-nag"
         cloudformation_directory: './cloudformation/' ## change to your template directory
+        scanner: "cfn-nag"
 ```
 
 ### Example checkov Test
@@ -58,8 +58,8 @@ jobs:
     - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       with:
-        scanner: "checkov"
         cloudformation_directory: './cloudformation/' ## change to your template directory
+        scanner: "checkov"
 ```
 
 > **Note:** it is possible to simple combine the two examples above into a single file which will run all tests as individual jobs. Reference [all-security-scans.yml](workflow-examples/all-security-scans.yml)
