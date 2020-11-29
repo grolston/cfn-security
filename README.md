@@ -1,12 +1,14 @@
-# cfn-security - GitHub Action
+# cfn-security
 
-A simple GitHub Action for static code analysis of AWS CloudFormation to improve infrastructure as code security.
+A simple `GitHub Action` for AWS CloudFormation static code analysis to improve infrastructure-as-code security.
 
-> **Note:** The Action *does not require* AWS credentials!
+***The Action does not require AWS credentials!***
 
 ## Usage
 
-To get started you will more than likely want security scans to happen on all branches. Simply add `securityscan.yml` file (or whatever you would like to name it in your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions)
+To get started simply add a workflow `.yml` file (name it whatever you would like) to your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions).
+
+For examples GitHub Actions workflow files check out the [example workflow templates](https://github.com/grolston/cfn-security/workflow-examples). If you still do not know where to start, just use the [all-security-scans.yml](workflow-examples/all-security-scans.yml) template which will create two security scan jobs. Update the template env vars as necessary.
 
 ### Example cfn-nag Test
 
@@ -48,11 +50,11 @@ jobs:
         TEST: "checkov"
 ```
 
-### Example all Tests
+### Example Singe Job All Tests
 
 The following example tests CloudFormation with all scanning tools.
 
-> **Note:** it is possible to simple combine the two examples above into a single file which will run all tests as individual jobs.
+> **Note:** it is possible to simple combine the two examples above into a single file which will run all tests as individual jobs. Reference [all-security-scans.yml](workflow-examples/all-security-scans.yml)
 
 The following runs all tests within one job:
 
