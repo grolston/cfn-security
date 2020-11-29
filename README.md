@@ -23,7 +23,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       env:
         CLOUDFORMATION_DIRECTORY: "./cloudformation"
@@ -43,7 +43,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       env:
         CLOUDFORMATION_DIRECTORY: "./cloudformation"
@@ -63,7 +63,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
     - uses: grolston/cfn-security@master
       env:
         CLOUDFORMATION_DIRECTORY: "./cloudformation"
