@@ -1,16 +1,9 @@
-# action.yml
 name: 'cfn-security'
 description: 'CloudFormation Static Code Analysis tool suite'
-inputs:
-  cfn-dir:
-    description: 'Directory where cloudformation templates are stored'
-    required: true
-    default: 'cloudformation'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+author: grolston
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
+  using: docker
+  image: Dockerfile
+branding:
+  icon: shield
+  color: green
