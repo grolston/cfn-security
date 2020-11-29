@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -v
-
 if [ -z "$INPUT_CLOUDFORMATION_DIRECTORY" ]; then
   echo "environment variable CLOUDFORMATION_DIRECTORY is not set. Quitting."
   exit 1
