@@ -2,13 +2,13 @@
 
 A simple GitHub Action for static code analysis of AWS CloudFormation to improve infrastructure as code security.
 
-> **Note:** The Action does not require any AWS credentials!
+> **Note:** The Action *does not require* AWS credentials!
 
 ## Usage
 
-### `workflow.yml` Example
+### `securityscan.yml` Example
 
-Place in a `.yml` file such as this one in your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions)
+To get started you will more than likely want security scans to happen on all branches. Simply add `securityscan.yml` file (or whatever you would like to name it in your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions)
 
 #### Example cfn-nag Test
 
@@ -20,7 +20,7 @@ name: Security Scan
 on: [push]
 
 jobs:
-  deploy:
+  security-scan-nag:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -40,7 +40,7 @@ name: Security Scan
 on: [push]
 
 jobs:
-  deploy:
+  security-scan-checkov:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -52,7 +52,11 @@ jobs:
 
 #### Example all Tests
 
-The following example tests CloudFormation with all scanning tools:
+The following example tests CloudFormation with all scanning tools.
+
+> **Note:** it is possible to simple combine the two examples above into a single file which will run all tests as individual jobs.
+
+The following runs all tests within one job:
 
 ```yaml
 name: Security Scan
@@ -60,7 +64,7 @@ name: Security Scan
 on: [push]
 
 jobs:
-  deploy:
+  security-scan-all:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
