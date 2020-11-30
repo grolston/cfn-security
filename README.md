@@ -18,7 +18,7 @@ The scanner used to run security test. Options are `cfn-nag`, `checkov`, or `all
 
 To get started simply add a workflow `.yml` file (name it whatever you would like) to your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions).
 
-For examples GitHub Actions workflow files check out the [example workflow templates](https://github.com/grolston/cfn-security/tree/master/workflow-examples). If you still do not know where to start, just use the [all-security-scans.yml](workflow-examples/all-security-scans.yml) template which will create two security scan jobs. Update the template env vars as necessary.
+For examples GitHub Actions workflow files check out the [example workflow templates](https://github.com/grolston/cfn-security/tree/master/workflow-examples). If you still do not know where to start, just use the [all-security-scans.yml](workflow-examples/all-security-scans.yml) template which will create two security scan jobs. Update the template input vars as necessary.
 
 ### Example cfn-nag Test
 
