@@ -1,4 +1,4 @@
-name: CFN-NAG Security Scan
+name: cfn-security Scan
 
 on: [push]
 
