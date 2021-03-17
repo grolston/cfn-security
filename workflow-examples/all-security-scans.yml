@@ -3,7 +3,7 @@ name: cfn-security Scan
 on: [push]
 
 jobs:
-  ## cfn-nag security scan
+  ## all scans
   security-scan-nag:
     runs-on: ubuntu-latest
     steps:
@@ -11,14 +11,4 @@ jobs:
     - uses: grolston/cfn-security@master
       with:
         cloudformation_directory: "./cloudformation/"
-        scanner: "cfn-nag"
-
-  ## checkov security scan
-  security-scan-checkov:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@master
-      with:
-        cloudformation_directory: "./cloudformation/"
-        scanner: "checkov"
+        scanner: "all"

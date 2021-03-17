@@ -12,13 +12,36 @@ The directory of the repo to scan the cloudformation templates.
 
 ### `scanner`
 
-The scanner used to run security test. Options are `cfn-nag`, `checkov`, or `all`
+The scanner used to run security test. Options are `cfn-lint`, `cfn-nag`, `checkov`, or `all`
 
 ## Usage
 
 To get started simply add a workflow `.yml` file (name it whatever you would like) to your `.github/workflows` folder. [Refer to the documentation on workflow YAML syntax here.](https://help.github.com/en/articles/workflow-syntax-for-github-actions).
 
 For examples GitHub Actions workflow files check out the [example workflow templates](https://github.com/grolston/cfn-security/tree/master/workflow-examples). If you still do not know where to start, just use the [all-security-scans.yml](workflow-examples/all-security-scans.yml) template which will create two security scan jobs. Update the template input vars as necessary.
+
+## Example cfn-lint Test
+
+
+The following example tests CloudFormation with cfn-lint:
+
+```yaml
+name: cfn-lint Scan
+
+on: [push]
+
+jobs:
+  ## cfn-nag security scan
+  security-scan-nag:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: grolston/cfn-security@master
+      with:
+        cloudformation_directory: './cloudformation/' ## change to your template directory
+        scanner: "cfn-lint"
+```
+
 
 ### Example cfn-nag Test
 

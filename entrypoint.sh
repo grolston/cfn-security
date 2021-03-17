@@ -17,6 +17,15 @@ fi
 
 case $INPUT_SCANNER in
 
+  "cfn-lint")
+    echo -n "...scanning with only cfn-lint yaml files"
+    sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}/*.yaml"
+    echo -n "...scanning with only cfn-lint yml files"
+    sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}/*.yml"
+    echo -n "...scanning with only cfn-lint json files"
+    sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}/*.json"
+    ;;
+
   "cfn-nag")
     echo -n "...scanning with only cfn-nag"
     sh -c "cfn_nag_scan --input-path ${INPUT_CLOUDFORMATION_DIRECTORY}"
@@ -29,6 +38,12 @@ case $INPUT_SCANNER in
 
   "all")
     echo -n "...scanning with all tools"
+    echo -n "...scanning with only cfn-lint yaml files"
+    sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}/*.yaml"
+    echo -n "...scanning with only cfn-lint yml files"
+    sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}/*.yml"
+    echo -n "...scanning with only cfn-lint json files"
+    sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}/*.json"
     sh -c "cfn_nag_scan --input-path ${INPUT_CLOUDFORMATION_DIRECTORY} && checkov -d ${INPUT_CLOUDFORMATION_DIRECTORY}"
     ;;
 
