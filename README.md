@@ -22,7 +22,6 @@ For examples GitHub Actions workflow files check out the [example workflow templ
 
 ## Example cfn-lint Test
 
-
 The following example tests CloudFormation with cfn-lint:
 
 ```yaml
@@ -41,7 +40,6 @@ jobs:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "cfn-lint"
 ```
-
 
 ### Example cfn-nag Test
 
