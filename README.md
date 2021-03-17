@@ -2,7 +2,7 @@
 
 A simple `GitHub Action` for AWS CloudFormation static code analysis to improve infrastructure-as-code security.
 
-> **Note:** The `all-tools` branch supports cfn-guard which added some size to the docker image. Only use this branch if needing all tools.
+> **Note:** The `all-tools` branch supports cfn-guard which added some size to the docker image. Due to this, the feature was not introduced into the main branch. Only use this branch if needing all tools or you are not worried about the additional size of the docker image.
 
 ***The Action does not require AWS credentials!***
 
