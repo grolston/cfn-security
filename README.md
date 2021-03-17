@@ -43,27 +43,6 @@ jobs:
         scanner: "cfn-nag"
 ```
 
-### Example checkov Test
-
-The following example tests CloudFormation with checkov:
-
-```yaml
-name: Checkov Security Scan
-
-on: [push]
-
-jobs:
-  ## checkov security scan
-  security-scan-checkov:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@all-tools
-      with:
-        cloudformation_directory: './cloudformation/' ## change to your template directory
-        scanner: "checkov"
-```
-
 ### Example cfn-guard test
 
 The following example tests CloudFormation
@@ -83,6 +62,27 @@ jobs:
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "cfn-guard"
+```
+
+### Example checkov Test
+
+The following example tests CloudFormation with checkov:
+
+```yaml
+name: Checkov Security Scan
+
+on: [push]
+
+jobs:
+  ## checkov security scan
+  security-scan-checkov:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: grolston/cfn-security@all-tools
+      with:
+        cloudformation_directory: './cloudformation/' ## change to your template directory
+        scanner: "checkov"
 ```
 
 > **Note:** it is possible to simple combine the two examples above into a single file which will run all tests as individual jobs. Reference [all-security-scans.yml](workflow-examples/all-security-scans.yml)
