@@ -19,11 +19,11 @@ case $INPUT_SCANNER in
 
   "cfn-lint")
     echo -n "scanning with only cfn-lint yaml files"
-    sh -c "cfn-lint validate -t ${INPUT_CLOUDFORMATION_DIRECTORY}*.yaml"
+    sh -c "cfn-lint validate ${INPUT_CLOUDFORMATION_DIRECTORY}*.yaml"
     echo -n "scanning with only cfn-lint yml files"
-    sh -c "cfn-lint validate -t ${INPUT_CLOUDFORMATION_DIRECTORY}*.yml"
+    sh -c "cfn-lint validate ${INPUT_CLOUDFORMATION_DIRECTORY}*.yml"
     echo -n "scanning with only cfn-lint json files"
-    sh -c "cfn-lint validate -t ${INPUT_CLOUDFORMATION_DIRECTORY}*.json"
+    sh -c "cfn-lint validate ${INPUT_CLOUDFORMATION_DIRECTORY}*.json"
     ;;
 
   "cfn-nag")
