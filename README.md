@@ -1,6 +1,8 @@
-# cfn-security
+# cfn-security - all tools
 
 A simple `GitHub Action` for AWS CloudFormation static code analysis to improve infrastructure-as-code security.
+
+> **Note:** The `all-tools` branch supports cfn-guard which added some size to the docker image. Only use this branch if needing all tools.
 
 ***The Action does not require AWS credentials!***
 
@@ -12,7 +14,7 @@ The directory of the repo to scan the cloudformation templates.
 
 ### `scanner`
 
-The scanner used to run security test. Options are `cfn-nag`, `checkov`, or `all`
+The scanner used to run security test. Options are `cfn-nag`, `cfn-guard`,  `checkov`, or `all`
 
 ## Usage
 
@@ -35,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@master
+    - uses: grolston/cfn-security@all-tools
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "cfn-nag"
@@ -56,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@master
+    - uses: grolston/cfn-security@all-tools
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "checkov"

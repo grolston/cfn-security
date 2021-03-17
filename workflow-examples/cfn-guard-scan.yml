@@ -1,9 +1,9 @@
-name: CFN-NAG Security Scan
+name: cfn-guard Security Scan
 
 on: [push]
 
 jobs:
-  ## cfn-nag security scan
+  ## cfn-guard security scan
   security-scan-nag:
     runs-on: ubuntu-latest
     steps:
@@ -11,4 +11,4 @@ jobs:
     - uses: grolston/cfn-security@all-tools
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
-        scanner: "cfn-nag"
+        scanner: "cfn-guard"

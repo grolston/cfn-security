@@ -22,6 +22,11 @@ case $INPUT_SCANNER in
     sh -c "cfn_nag_scan --input-path ${INPUT_CLOUDFORMATION_DIRECTORY}"
     ;;
 
+  "cfn-guard")
+    echo -n "...scanning with only cfn-guard"
+    tree -fai ${INPUT_CLOUDFORMATION_DIRECTORY} | grep -e ".yml$" -e ".yaml$" -e ".json$" | cfn-guard check
+    ;;
+
   "checkov")
     echo -n "...scanning with only checkov"
     sh -c "checkov -d ${INPUT_CLOUDFORMATION_DIRECTORY}"
@@ -30,6 +35,7 @@ case $INPUT_SCANNER in
   "all")
     echo -n "...scanning with all tools"
     sh -c "cfn_nag_scan --input-path ${INPUT_CLOUDFORMATION_DIRECTORY} && checkov -d ${INPUT_CLOUDFORMATION_DIRECTORY}"
+    tree -fai ${INPUT_CLOUDFORMATION_DIRECTORY} | grep -e ".yml$" -e ".yaml$" -e ".json$" | cfn-guard check
     ;;
 
   *)

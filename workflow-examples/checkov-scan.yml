@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@master
+    - uses: grolston/cfn-security@all-tools
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "checkov"
