@@ -1,4 +1,4 @@
-# cfn-security - all tools
+# cfn-security | all tools
 
 A simple `GitHub Action` for AWS CloudFormation static code analysis to improve infrastructure-as-code security.
 
