@@ -43,17 +43,17 @@ jobs:
         scanner: "cfn-nag"
 ```
 
-### Example cfn-guard test
+### Example cfn-guard Test
 
 The following example tests CloudFormation
 
 ```yaml
-name: Checkov Security Scan
+name: cfn-guard Security Scan
 
 on: [push]
 
 jobs:
-  ## checkov security scan
+  ## cfn-guard security scan
   security-scan-cfn-guard:
     runs-on: ubuntu-latest
     steps:
