@@ -18,11 +18,11 @@ fi
 case $INPUT_SCANNER in
 
   "cfn-lint")
-    echo -n "...scanning with only cfn-lint yaml files"
+    echo -n "scanning with only cfn-lint yaml files"
     sh -c 'cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}*.yaml'
-    echo -n "...scanning with only cfn-lint yml files"
+    echo -n "scanning with only cfn-lint yml files"
     sh -c 'cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}*.yml'
-    echo -n "...scanning with only cfn-lint json files"
+    echo -n "scanning with only cfn-lint json files"
     sh -c 'cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}*.json'
     ;;
 
