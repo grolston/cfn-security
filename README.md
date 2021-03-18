@@ -6,7 +6,7 @@ A simple `GitHub Action` for AWS CloudFormation static code analysis to improve 
 
 cfn-security supports the following linting and security tools:
 
-- [cfn-lint](https://github.com/aws-cloudformation/cfn-python-lint) aka cfn-python-lint
+- [cfn-lint](https://github.com/aws-cloudformation/cfn-python-lint) *a.k.a.* cfn-python-lint
 - [cfn-nag](https://github.com/stelligent/cfn_nag)
 - [checkov](https://github.com/bridgecrewio/checkov)
 
