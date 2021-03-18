@@ -11,7 +11,7 @@ if [ ! -d "$INPUT_CLOUDFORMATION_DIRECTORY" ]; then
 fi
 
 if [ -z "$INPUT_SCANNER" ]; then
-  echo "environment variable TEST is not set. Quitting."
+  echo "environment variable SCANNE is not set. Quitting."
   exit 1
 fi
 
