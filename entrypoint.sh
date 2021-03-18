@@ -21,7 +21,7 @@ case $INPUT_SCANNER in
     #echo -n "scanning with only cfn-lint yaml files"
     #sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}*.yaml"
     echo -n "scanning with only cfn-lint yml files"
-    sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}*.yml"
+    sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}*"
     #echo -n "scanning with only cfn-lint json files"
     #sh -c "cfn-lint ${INPUT_CLOUDFORMATION_DIRECTORY}*.json"
     ;;
