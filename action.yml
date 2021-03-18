@@ -6,7 +6,7 @@ inputs:
     description: 'directory within git repo to scan cloudformation templates'
     required: true
   scanner:
-    description: 'scanner used to run security test. Options are "cfn-nag", "checkov", "all"'
+    description: 'scanner used to run security test. Options are "cfn-lint", "cfn-nag", "checkov", "all"'
     required: true
 runs:
   using: docker
