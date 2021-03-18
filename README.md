@@ -4,6 +4,12 @@ A simple `GitHub Action` for AWS CloudFormation static code analysis to improve 
 
 ***The Action does not require AWS credentials!***
 
+cfn-security supports the following linting and security tools:
+
+- [cfn-lint](https://github.com/aws-cloudformation/cfn-python-lint) aka cfn-python-lint
+- [cfn-nag](https://github.com/stelligent/cfn_nag)
+- [checkov](https://github.com/bridgecrewio/checkov)
+
 ## Inputs
 
 ### `cloudformation_directory`
@@ -30,8 +36,8 @@ name: cfn-lint Scan
 on: [push]
 
 jobs:
-  ## cfn-nag security scan
-  security-scan-nag:
+  ## cfn-lint scan
+  sast-cfn-lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -46,13 +52,13 @@ jobs:
 The following example tests CloudFormation with cfn-nag:
 
 ```yaml
-name: CFN-NAG Security Scan
+name: cfn-nag Security Scan
 
 on: [push]
 
 jobs:
   ## cfn-nag security scan
-  security-scan-nag:
+  sast-cfn-nag:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -67,13 +73,13 @@ jobs:
 The following example tests CloudFormation with checkov:
 
 ```yaml
-name: Checkov Security Scan
+name: checkov Security Scan
 
 on: [push]
 
 jobs:
   ## checkov security scan
-  security-scan-checkov:
+  sast-checkov:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

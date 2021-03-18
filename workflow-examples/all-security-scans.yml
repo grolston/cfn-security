@@ -1,4 +1,4 @@
-name: cfn-security Scan
+name: cfn-security sast
 
 on: [push]
 
