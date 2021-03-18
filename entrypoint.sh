@@ -11,7 +11,7 @@ if [ ! -d "$INPUT_CLOUDFORMATION_DIRECTORY" ]; then
 fi
 
 if [ -z "$INPUT_SCANNER" ]; then
-  echo "environment variable SCANNE is not set. Quitting."
+  echo "environment variable SCANNE is not set. Please use 'cfn-lint', 'cfn-nag', 'checkov', or 'all' Quitting."
   exit 1
 fi
 
