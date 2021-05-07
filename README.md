@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@master
+    - uses: grolston/cfn-security@v1
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "cfn-lint"
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@master
+    - uses: grolston/cfn-security@v1
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "cfn-nag"
@@ -83,7 +83,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@master
+    - uses: grolston/cfn-security@v1
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "checkov"
