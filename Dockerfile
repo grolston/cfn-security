@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM grolston/cfn-security:1.0
+FROM public.ecr.aws/rolston/cfn-security:2.0
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh

@@ -4,6 +4,8 @@ A simple `GitHub Action` for AWS CloudFormation static code analysis to improve 
 
 ***The Action does not require AWS credentials!***
 
+> **Note:** as of `v2`, the cfn-security image is using AWS ECR for the image registry. cfn-security `v1` will remain on docker hub unchanged; however, the rate limits could impact the utilization. It is recommended to move to `v2`.
+
 cfn-security supports the following linting and security tools:
 
 - [cfn-lint](https://github.com/aws-cloudformation/cfn-python-lint) *a.k.a.* cfn-python-lint
@@ -41,10 +43,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@v1
+    - uses: grolston/cfn-security@v2
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "cfn-lint"
+```
+
+The cfn-lint scan will result in a pipeline failure for any identified rule violations. To suppress cfn-lint rules within your cloudformation template you can add in cfn-lint `Metadata` to the impacted resource. Example:
+
+```yaml
+Resources:
+  myInstance:
+    Type: AWS::EC2::Instance
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+            - E3030
+    Properties:
+      InstanceType: nt.x4superlarge
+      ImageId: ami-abc1234
 ```
 
 ### Example cfn-nag Test
@@ -62,10 +80,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@v1
+    - uses: grolston/cfn-security@v2
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "cfn-nag"
+```
+The cfn-nag scan will result in a pipeline failure for any identified rule violations. To suppress cfn-nag rules within your cloudformation template you can add in cfn-nag `Metadata` to the impacted resource. Example:
+
+```yaml
+# Partial template
+PublicAlbSecurityGroup:
+  Properties:
+    GroupDescription: 'Security group for a public Application Load Balancer'
+    VpcId:
+      Ref: vpc
+  Type: AWS::EC2::SecurityGroup
+  Metadata:
+    cfn_nag:
+      rules_to_suppress:
+        - id: W9
+          reason: "This is a public facing ELB and ingress from the internet should be permitted."
+        - id: W2
+          reason: "This is a public facing ELB and ingress from the internet should be permitted."
+PublicAlbSecurityGroupHttpIngress:
+  Properties:
+    CidrIp: 0.0.0.0/0
+    FromPort: 80
+    GroupId:
+      Ref: PublicAlbSecurityGroup
+    IpProtocol: tcp
+    ToPort: 80
+  Type: AWS::EC2::SecurityGroupIngress
 ```
 
 ### Example checkov Test
@@ -83,10 +128,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: grolston/cfn-security@v1
+    - uses: grolston/cfn-security@v2
       with:
         cloudformation_directory: './cloudformation/' ## change to your template directory
         scanner: "checkov"
+```
+The checkov scan will result in a pipeline failure for any identified rule violations. To suppress checkov rules within your cloudformation template place a `# checkov:skip=[Rule To Skip]` within the impacted resource. Example:
+
+```yaml
+Resources:
+  MyDB:
+    Type: 'AWS::RDS::DBInstance'
+    # Test case for check skip via comment
+    # checkov:skip=CKV_AWS_16:Ensure all data stored in the RDS is securely encrypted at rest
+    Properties:
+      DBName: 'mydb'
+      DBInstanceClass: 'db.t3.micro'
+      Engine: 'mysql'
+      MasterUsername: 'master'
+      MasterUserPassword: 'password'
 ```
 
 > **Note:** it is possible to simple combine the two examples above into a single file which will run all tests as individual jobs. Reference [all-security-scans.yml](workflow-examples/all-security-scans.yml)
