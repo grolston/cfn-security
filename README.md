@@ -1,6 +1,6 @@
 # cfn-security
 
-> **Note:** as of `v2`, the cfn-security image is using AWS ECR for the image registry. cfn-security `v1` will remain on docker hub unchanged; however, the docker hub rate limits could impact the utilization. It is recommended to move to `v2`.
+> **Note:** as of `v2`, the cfn-security image is using AWS ECR for the image registry. cfn-security `v1` will remain on docker hub unchanged; however, the docker hub rate limits could impact utilization. It is recommended to move to `v2`.
 
 A simple `GitHub Action` for AWS CloudFormation static code analysis to improve infrastructure-as-code security.
 
